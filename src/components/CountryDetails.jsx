@@ -9,18 +9,33 @@ export default function CountryDetails({ countries }) {
   });
 
   return (
-    <div>
-      <h2>{foundCountry.name.common}</h2>
-      <h4>Capital: {foundCountry.capital}</h4>
-      <h4>Area: {foundCountry.area} km²</h4>
-      <ul>
-        {(foundCountry.borders).map((elem, i) => {
-          return (
-            <li className='country-details' key={elem}>{elem}</li>
-          )
-        })}
-      </ul>
+    <div className="fixed-right position-fixed ms-5">
       <img src={`https://flagpedia.net/data/flags/icon/72x54/${foundCountry.alpha2Code.toLowerCase()}.png`} alt="country-flag" />
+      <h1>{foundCountry.name.common}</h1>
+      <table>
+        <tbody>
+          <tr>
+            <td>Capital:</td>
+            <td>{foundCountry.capital}</td>
+          </tr>
+          <tr>
+            <td>Area:</td>
+            <td>{foundCountry.area} km²</td>
+          </tr>
+          <tr>
+            <td>Borders:</td>
+            <td>
+              <ul className="list-unstyled"> 
+                {(foundCountry.borders).map(elem => {
+                  return (
+                    <li className='country-details' key={elem}>{elem}</li>
+                  )
+                })}
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   )
 }
